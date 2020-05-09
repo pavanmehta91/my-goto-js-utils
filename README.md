@@ -65,3 +65,30 @@ Example usage
 await delay(500);
 //do something else after 500 ms delay.
 ```
+
+## 3. Download File by URL (Browser)
+```
+export function downloadFile(fileURL, fileName) {
+  let save = document.createElement('a');
+  save.href = fileURL;
+  save.target = '_blank';
+  let filename = fileName || fileURL.substring(fileURL.lastIndexOf('/') + 1);
+  save.download = filename;
+  if (
+    navigator.userAgent.toLowerCase().match(/(ipad|iphone|safari)/) &&
+    navigator.userAgent.search('Chrome') < 0
+  ) {
+    document.location = save.href;
+    // window event not working here
+  } else {
+    let evt = new MouseEvent('click', {
+      view: window,
+      bubbles: true,
+      cancelable: false,
+    });
+    save.dispatchEvent(evt);
+    (window.URL || window.webkitURL).revokeObjectURL(save.href);
+  }
+}
+```
+

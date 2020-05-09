@@ -184,9 +184,9 @@ export const ceiling = (num, multiple = 1) => {
 };
 
 ```
-Example usagee
+Example usage
 ```javascript
 ceiling(41.8, 0.5); //Would return 42.0
-ceiling(41.23, 0.5); //Would return 41.0
+ceiling(41.23, 0.5); //Would return 41.5
 ceiling(41.26, 0.5); //Would return 41.5
 ```

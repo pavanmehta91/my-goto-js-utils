@@ -156,3 +156,4 @@ const copyToClipboard = str => {
 Example usage
 ```javascript
 <button onClick={()=> copyToClipboard("I'm awesome"); }> Copy </button>
+```

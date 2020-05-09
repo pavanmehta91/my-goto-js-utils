@@ -139,3 +139,20 @@ Example Usage
 ```javascript 
 renameKeys({productId: 'product_id', productName: 'product_name'}, { productId: 4, productName: 'Keyboard'});
 ```
+## 7. CopyToClipboard (Browser Function)
+```javascript
+const copyToClipboard = str => {
+  const el = document.createElement('textarea');
+  el.value = str;
+  el.setAttribute('readonly', '');
+  el.style.position = 'absolute';
+  el.style.left = '-9999px';
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+};
+```
+Example usage
+```javascript
+<button onClick={()=> copyToClipboard("I'm awesome"); }> Copy </button>

@@ -91,4 +91,19 @@ export function downloadFile(fileURL, fileName) {
   }
 }
 ```
+## 4. Sort On Keys (Secondary Sort)
+```
+export const sortOnKeys = keysArray => (a, b) => {
+  return keysArray.reduce((result, key) => {
+    if (result) return result;
+    if (a[key] > b[key]) return 1;
+    else if (a[key] < b[key]) return -1;
+    return 0;
+  }, 0);
+};
+```
+Example usage
+```
+array.sort(sortOnKeys(['propertyA', 'propertyB']))
+```
 

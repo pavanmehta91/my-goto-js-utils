@@ -1,7 +1,7 @@
 # my-goto-js-utils
 
 ## 1. To Unix Timestamp
-```
+```javascript
 export const toUnixTimestamp = (date, seconds=true) => {
   const divider = seconds ? 1000 : 1;
   return (date.getTime() / divider) | 0;
@@ -9,13 +9,13 @@ export const toUnixTimestamp = (date, seconds=true) => {
 
 ```
 ## 2. Async Wrap
-```
+```javascript
 export function asyncWrap(promise) {
   return promise.then(result => [null, result]).catch(err => [err]);
 }
 ```
 Example Usage
-```
+```javascript
 const [error, response] = await asyncWrap(searchUsers(search_string));
   if (!error) {
    //DO Something. Look MA No Try catch
@@ -23,16 +23,16 @@ const [error, response] = await asyncWrap(searchUsers(search_string));
 ```
 
 ## 3.  number_format (PHP Inspired)
-```
+```javascript
 export const number_format = (val, decimals = 2) => parseFloat(+val).toFixed(decimals);
 ```
 Example usage
-```
+```javascript
 number_format(totals, 2);
 ```
 
 ## 4. Download Blob
-```
+```javascript
 export function downloadBlob({ blob, fileName = 'download' }) {
   const a = document.createElement('a');
   a.href = blob;
@@ -46,28 +46,28 @@ export function downloadBlob({ blob, fileName = 'download' }) {
 }
 ```
 Example usage
-```
-                    const { data: response } = await axios({
-                      url: 'path-to-excel-file',
-                      responseType: 'blob',
-                    });
-                    const blob = window.URL.createObjectURL(new Blob([response]));
-                    const fileName = `excel.xls`;
-                    downloadBlob({ blob, fileName });
+```javascript
+  const { data: response } = await axios({
+    url: 'path-to-excel-file',
+    responseType: 'blob',
+  });
+  const blob = window.URL.createObjectURL(new Blob([response]));
+  const fileName = `excel.xls`;
+  downloadBlob({ blob, fileName });
 ```
 
 ## 5. setTimeoutpromise i.e delay
-```
+```javascript
 export const delay = (ms = 100) => new Promise(resolve => setTimeout(() => resolve(), ms));
 ```
 Example usage
-```
+```javascript
 await delay(500);
 //do something else after 500 ms delay.
 ```
 
 ## 3. Download File by URL (Browser)
-```
+```javascript
 export function downloadFile(fileURL, fileName) {
   let save = document.createElement('a');
   save.href = fileURL;
@@ -92,7 +92,7 @@ export function downloadFile(fileURL, fileName) {
 }
 ```
 ## 4. Sort On Keys (Secondary Sort)
-```
+```javascript
 export const sortOnKeys = keysArray => (a, b) => {
   return keysArray.reduce((result, key) => {
     if (result) return result;
@@ -103,16 +103,16 @@ export const sortOnKeys = keysArray => (a, b) => {
 };
 ```
 Example usage
-```
+```javascript
 array.sort(sortOnKeys(['propertyA', 'propertyB']))
 ```
 ## 5. Formatted Date Display (Browser)
-```
+```javascript
 
   const formattedDate = (d, options) => new Intl.DateTimeFormat('default', options).format(d);
 ```
 Example Usage
-```
+```javascript
   const options = {
     hour: 'numeric',
     minute: 'numeric',
@@ -123,4 +123,19 @@ Example Usage
     day: 'numeric',
   };
 console.log(formattedDate(new Date(), options));
+```
+## 6. Rename Keys of an Object
+```javascript
+const renameKeys = (keysMap, obj) =>
+  Object.keys(obj).reduce(
+    (acc, key) => ({
+      ...acc,
+      ...{ [keysMap[key] || key]: obj[key] },
+    }),
+    {}
+  );
+```
+Example Usage
+```javascript 
+renameKeys({productId: 'product_id', productName: 'product_name'}, { productId: 4, productName: 'Keyboard'});
 ```

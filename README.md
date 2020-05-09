@@ -106,4 +106,21 @@ Example usage
 ```
 array.sort(sortOnKeys(['propertyA', 'propertyB']))
 ```
+## 5. Formatted Date Display (Browser)
+```
 
+  const formattedDate = (d, options) => new Intl.DateTimeFormat('default', options).format(d);
+```
+Example Usage
+```
+  const options = {
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    year: '2-digit',
+    hour12: true,
+    month: 'numeric',
+    day: 'numeric',
+  };
+console.log(formattedDate(new Date(), options));
+```

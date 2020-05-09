@@ -157,3 +157,18 @@ Example usage
 ```javascript
 <button onClick={()=> copyToClipboard("I'm awesome"); }> Copy </button>
 ```
+## 8 IndexArrayBy (Hash by Id)
+```javascript
+const indexArrayBy = key => array =>
+  array.reduce((acc, cur) => {
+    acc[cur[key]] = cur;
+    return acc;
+  }, {});
+```
+Example usage
+```javascript
+const arr = [{id: 1, name: 'Github'}, {id: 2, name: 'Gitlab'}, {id: 3, name: 'Bitbucket'}];
+const indexBy = indexArrayBy('id');
+const arrById = indexBy(arr);
+
+```

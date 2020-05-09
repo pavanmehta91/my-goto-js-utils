@@ -157,7 +157,7 @@ Example usage
 ```javascript
 <button onClick={()=> copyToClipboard("I'm awesome"); }> Copy </button>
 ```
-## 8 IndexArrayBy (Hash by Id)
+## 8. IndexArrayBy (Hash by Id)
 ```javascript
 const indexArrayBy = key => array =>
   array.reduce((acc, cur) => {
@@ -171,4 +171,22 @@ const arr = [{id: 1, name: 'Github'}, {id: 2, name: 'Gitlab'}, {id: 3, name: 'Bi
 const indexBy = indexArrayBy('id');
 const arrById = indexBy(arr);
 
+```
+## 9. Ceil to nearest multiplier(any decimal <= 1.0)
+```javascript
+export const ceiling = (num, multiple = 1) => {
+  if (multiple === 0 || isNaN(multiple) || isNaN(num)) {
+    console.error(ERROR_MESSAGE);
+    throw new Error(ERROR_MESSAGE);
+  }
+  const multiplier = 1 / multiple;
+  return Number((Math.ceil(num * multiplier) / multiplier).toFixed(1));
+};
+
+```
+Example usagee
+```javascript
+ceiling(41.8, 0.5); //Would return 42.0
+ceiling(41.23, 0.5); //Would return 41.0
+ceiling(41.26, 0.5); //Would return 41.5
 ```

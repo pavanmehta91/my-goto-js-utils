@@ -55,3 +55,13 @@ Example usage
                     const fileName = `excel.xls`;
                     downloadBlob({ blob, fileName });
 ```
+
+## 5. setTimeoutpromise i.e delay
+```
+export const delay = (ms = 100) => new Promise(resolve => setTimeout(() => resolve(), ms));
+```
+Example usage
+```
+await delay(500);
+//do something else after 500 ms delay.
+```

@@ -190,3 +190,24 @@ ceiling(41.8, 0.5); //Would return 42.0
 ceiling(41.23, 0.5); //Would return 41.5
 ceiling(41.26, 0.5); //Would return 41.5
 ```
+
+## 10. Higher Order Function to Measure running time of a function(or a piece of code)
+```javascript
+const measure = (fn) => (...args) => {
+  const t0 = performance.now();
+  var result =  fn(...args);
+  const t1 = performance.now()
+  console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.")
+  return result;
+}
+
+function countTill(n=5e3){
+  for(let i=0; i<n; i++){
+  console.log(`${i} of ${n}`);
+  }
+}
+
+measure(countTill)();
+//This displays the time countTill runs in ms and returns the result.
+
+```

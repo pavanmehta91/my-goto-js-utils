@@ -218,8 +218,7 @@ const ConditionalWrapper = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
 ```
 Example usage
-```
-javascript
+```javascript
       <ConditionalWrapper
         condition={addLink}
         wrapper={children => <a href={link}>{children}</a>}

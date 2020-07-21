@@ -211,3 +211,19 @@ measure(countTill)();
 //This displays the time countTill runs in ms and returns the result.
 
 ```
+
+## 11. Conditionally Wrap React components with a parent
+```javascript
+const ConditionalWrapper = ({ condition, wrapper, children }) =>
+  condition ? wrapper(children) : children;
+```
+Example usage
+```
+javascript
+      <ConditionalWrapper
+        condition={addLink}
+        wrapper={children => <a href={link}>{children}</a>}
+      >
+        <span> This will be link based on a condition </span>
+      </ConditionalWrapper
+```

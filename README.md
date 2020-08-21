@@ -226,3 +226,20 @@ Example usage
         <span> This will be link based on a condition </span>
       </ConditionalWrapper
 ```
+## 12. Variant of conditional wrapper with react.cloneElement
+```javascript
+const ConditionalWrapper = ({ condition, wrapper, children }) =>
+  condition ? React.cloneElement(wrapper,{children}) : children;
+```
+
+Example usage
+```javascript
+      <ConditionalWrapper
+        condition={addLink}
+        wrapper={<a href={link} />}
+      >
+        <span> This will be link based on a condition </span>
+      </ConditionalWrapper
+```
+
+

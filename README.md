@@ -243,6 +243,7 @@ Example usage
 ```
 ## 13. Similar implementation in HOC
 
+```
 import React from "react";
 const Dum = wrapParent(DummyComponent);
 
@@ -270,6 +271,4 @@ function wrapParent(WrappedComponent) {
     );
   };
 }
-
-
-
+```

@@ -241,5 +241,35 @@ Example usage
         <span> This will be link based on a condition </span>
       </ConditionalWrapper
 ```
+## 13. Similar implementation in HOC
+
+import React from "react";
+const Dum = wrapParent(DummyComponent);
+
+export default function App() {
+  return (
+    <div className="App">
+      <Dum style={{ color: "yellow" }} include={false}>
+        This is a dummy component wrapped or not you decide
+      </Dum>
+    </div>
+  );
+}
+
+function DummyComponent({ children, ...rest }) {
+  return <p {...rest}>{children}</p>;
+}
+
+function wrapParent(WrappedComponent) {
+  return (props) => {
+    const { include, children, ...rest } = props;
+    return include ? (
+      <WrappedComponent {...rest}> {children} </WrappedComponent>
+    ) : (
+      <>{children}</>
+    );
+  };
+}
+
 
 
